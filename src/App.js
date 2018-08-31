@@ -7,7 +7,12 @@ class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      list: []
+      list: [
+        {
+          title: 'Card title',
+          description: 'Card description'
+        }
+      ]
     }
   }
 
@@ -15,7 +20,9 @@ class App extends Component {
     return (
       <div>
         <h1>Note List</h1>
-        <CardList/>
+        <CardList
+          list={this.state.list}
+        />
       </div>
     );
   }
