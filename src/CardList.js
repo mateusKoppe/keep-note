@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 
 class CardList extends Component {
-  render () {
-    return (
-      this.props.list.map(this.cardRender)
-    )
-  }
-
   cardRender (card, index) {
     return (
       <div key={index}>
@@ -15,6 +9,13 @@ class CardList extends Component {
       </div>
     )
   }
+
+  render () {
+    return (
+      this.props.list.map(this.cardRender)
+    )
+  }
+
 }
 
 export default CardList;
