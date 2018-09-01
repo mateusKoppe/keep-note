@@ -7,9 +7,9 @@ class CardList extends Component {
     )
   }
 
-  cardRender (card) {
+  cardRender (card, index) {
     return (
-      <div>
+      <div key={index}>
         <h2>{card.title}</h2>
         <div>{card.description}</div>
       </div>

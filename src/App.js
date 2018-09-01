@@ -7,21 +7,43 @@ class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      list: [
-        {
-          title: 'Card title',
-          description: 'Card description'
-        }
-      ]
+      cardList: [],
+      formTitle: ''
     }
+  }
+
+  cardSubmitHandle = (e) => {
+    this.addCard({
+      title: this.state.formTitle 
+    });
+    e.preventDefault();
+  }
+
+  changeTitle = (e) => {
+    this.setState({
+      formTitle: e.target.value
+    })
+  }
+
+  addCard = (card) => {
+    this.setState({
+      formTitle: '',
+      cardList: this.state.cardList.concat([card]) 
+    })
   }
 
   render() {
     return (
       <div>
         <h1>Note List</h1>
+        <form onSubmit={this.cardSubmitHandle}>
+          <input
+            value={this.state.formTitle}
+            onChange={this.changeTitle}
+          />
+        </form>
         <CardList
-          list={this.state.list}
+          list={this.state.cardList}
         />
       </div>
     );
