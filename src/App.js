@@ -8,26 +8,33 @@ class App extends Component {
     super(props)
     this.state = {
       cardList: [],
-      formTitle: ''
+      form: {
+        title: ''
+      }
     }
   }
 
   cardSubmitHandle = (e) => {
     this.addCard({
-      title: this.state.formTitle 
+      ...this.state.form
     });
     e.preventDefault();
   }
 
-  changeTitle = (e) => {
+  changeField = (e) => {
     this.setState({
-      formTitle: e.target.value
+      form: {
+        ...this.state.form,
+        [e.target.name]: e.target.value
+      }
     })
   }
 
   addCard = (card) => {
     this.setState({
-      formTitle: '',
+      form: {
+        title: '' 
+      },
       cardList: this.state.cardList.concat([card]) 
     })
   }
@@ -38,8 +45,9 @@ class App extends Component {
         <h1>Note List</h1>
         <form onSubmit={this.cardSubmitHandle}>
           <input
-            value={this.state.formTitle}
-            onChange={this.changeTitle}
+            name="title"
+            value={this.state.form.title}
+            onChange={this.changeField}
           />
         </form>
         <CardList
