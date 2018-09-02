@@ -9,7 +9,8 @@ class App extends Component {
     this.state = {
       cardList: [],
       form: {
-        title: ''
+        title: '',
+        description: ''
       }
     }
   }
@@ -33,10 +34,17 @@ class App extends Component {
   addCard = (card) => {
     this.setState({
       form: {
-        title: '' 
+        title: '',
+        description: ''
       },
       cardList: this.state.cardList.concat([card]) 
     })
+  }
+
+  onChangeList = (newList) => {
+    this.setState({
+      cardList: newList 
+    }) 
   }
 
   render() {
@@ -52,6 +60,7 @@ class App extends Component {
         </form>
         <CardList
           list={this.state.cardList}
+          onChange={this.onChangeList}
         />
       </div>
     );
