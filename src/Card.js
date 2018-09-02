@@ -1,48 +1,47 @@
-import React, { Component } from 'react';
+import React from 'react'
 
-class Card extends Component {
-  inactiveCard () {
-    return (
-      <div onClick={this.props.onClick}>
-        <h2>{this.props.title}</h2>
-        <div>{this.props.description}</div>
-      </div>
-    )
-  }
-
-  activeCard () {
-    return (
-      <div onClick={this.props.onClick}>
-        <input
-          name="title"
-          value={this.props.title}
-          onChange={this.onChangeInput}
-        />
-        <input
-          name="description"
-          value={this.props.description}
-          onChange={this.onChangeInput}
-        />
-      </div>
-    )
-  }
-
-  onChangeInput = (e) => {
+const card = (props) => {
+  const onChangeInput = (e) => {
     const card = {
-      title: this.props.title, 
-      description: this.props.description
+      title: props.title, 
+      description: props.description
     }
-    this.props.onChange({
+    props.onChange({
       ...card,
       [e.target.name]: e.target.value
     })
   }
-  
-  render () {
-    return this.props.active
-      ? this.activeCard()
-      : this.inactiveCard()
+
+  const inactiveCard = () => {
+    return (
+      <div onClick={props.onClick}>
+        <h2>{props.title}</h2>
+        <div>{props.description}</div>
+      </div>
+    )
   }
+
+  const activeCard = () => {
+    return (
+      <div onClick={props.onClick}>
+        <input
+          name="title"
+          value={props.title}
+          onChange={onChangeInput}
+        />
+        <input
+          name="description"
+          value={props.description}
+          onChange={onChangeInput}
+        />
+      </div>
+    )
+  }
+
+
+  return props.active
+    ? activeCard()
+    : inactiveCard()
 }
 
-export default Card;
+export default card;
