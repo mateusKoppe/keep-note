@@ -13,18 +13,6 @@ const card = (props) => {
     })
   }
 
-  const inactiveCard = () => {
-    return (
-      <div
-        className="Card"
-        onClick={props.onClick}
-      >
-        <h2 class="Card-title">{props.title}</h2>
-        <div>{props.description}</div>
-      </div>
-    )
-  }
-
   const Card = () => {
     return (
       <div
