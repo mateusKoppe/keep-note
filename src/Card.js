@@ -1,4 +1,5 @@
 import React from 'react'
+import './Card.css'
 
 const card = (props) => {
   const onChangeInput = (e) => {
@@ -14,23 +15,32 @@ const card = (props) => {
 
   const inactiveCard = () => {
     return (
-      <div onClick={props.onClick}>
-        <h2>{props.title}</h2>
+      <div
+        className="Card"
+        onClick={props.onClick}
+      >
+        <h2 class="Card-title">{props.title}</h2>
         <div>{props.description}</div>
       </div>
     )
   }
 
-  const activeCard = () => {
+  const Card = () => {
     return (
-      <div onClick={props.onClick}>
+      <div
+        className="Card active"
+        onClick={props.onClick}
+      >
         <input
           name="title"
+          className="Card-input Card-title"
           value={props.title}
           onChange={onChangeInput}
         />
-        <input
+        <textarea
           name="description"
+          className="Card-input"
+          rows="4"
           value={props.description}
           onChange={onChangeInput}
         />
@@ -39,9 +49,7 @@ const card = (props) => {
   }
 
 
-  return props.active
-    ? activeCard()
-    : inactiveCard()
+  return Card()
 }
 
 export default card;

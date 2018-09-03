@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import CardList from './CardList';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -49,11 +48,15 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="App">
         <h1>Note List</h1>
-        <form onSubmit={this.cardSubmitHandle}>
+        <form
+          onSubmit={this.cardSubmitHandle}
+          className="App-search-form"
+        >
           <input
             name="title"
+            className="App-search-input"
             value={this.state.form.title}
             onChange={this.changeField}
           />
