@@ -1,8 +1,11 @@
 import React from 'react';
 
+import Notes from "./components/Notes/Notes"
+
 function App() {
   return (
-    <div className="App">
+    <div className="container mx-auto">
+      <Notes/>
     </div>
   );
 }
